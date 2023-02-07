@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <main>
+      <label for="nazwa"
+        >podaj nazwe samochodu: <input type="text" id="nazwa"
+      /></label>
+      <label for="marka"
+        >podaj marke: <input type="text" id="marka"
+      /></label>
+      <label for="przebieg"
+        >podaj przebieg(km): <input type="number" id="przebieg"
+      /></label>
+      <label for="rok"
+        >podaj rok produkcji: <input type="number" id="rok"
+      /></label>
+
+      <button>dodaj</button>
+    </main>
+    <section>
+      <p id="display"></p>
+    </section>
+    <script>
+      const nazwa = document.getElementById("nazwa");
+      const num2 = document.querySelector("#marka");
+      const przebieg = document.getElementById("przebieg");
+      const rok = document.getElementById("rok");
+      const dodaj = document.querySelector("button");
+      const display = document.querySelector("#display");
+      const auta = [];
+      const auto = {        
+      };
+      
+      function fn1() {
+
+        auto.nazwa=nazwa.value;
+        auto.marka=marka.value;
+        auto.rok_produkcji=rok.value;
+        auto.przebieg=przebieg.value;
+        auta.push(auto);
+        for (const obj of auta) {
+            for(const key in auto){
+                display.innerHTML += obj[key];
+                display.innerHTML += ",";
+                
+                
+            }
+                display.innerHTML += '<br>';
+                break;
+        
+       }
+        console.log(auta);
+      }
+      dodaj.addEventListener("click", fn1);
+    </script>
+  </body>
+</html>
