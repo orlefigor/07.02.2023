@@ -3,56 +3,83 @@
   <head> </head>
   <body>
     <main>
-      <label for="nazwa"
-        >podaj nazwe samochodu: <input type="text" id="nazwa"
-      /></label>
-      <label for="marka"
-        >podaj marke: <input type="text" id="marka"
-      /></label>
-      <label for="przebieg"
-        >podaj przebieg(km): <input type="number" id="przebieg"
-      /></label>
-      <label for="rok"
-        >podaj rok produkcji: <input type="number" id="rok"
-      /></label>
+    <label for="nazwa">
+        podaj nazwe przypomnienia: <input type="text" id="nazwa"/>
+    </label>
 
-      <button>dodaj</button>
+    <label for="czas">
+        podaj do kiedy można wykonać: <input type="date" id="czas"/>
+    </label>
+    <button id="dodaj">dodaj</button>
     </main>
     <section>
       <p id="display"></p>
     </section>
     <script>
-      const nazwa = document.getElementById("nazwa");
-      const num2 = document.querySelector("#marka");
-      const przebieg = document.getElementById("przebieg");
-      const rok = document.getElementById("rok");
-      const dodaj = document.querySelector("button");
+      const nazwa = document.querySelector("#nazwa");
+      const czas = document.querySelector("#czas");
+      const dodaj = document.querySelector("#dodaj");
       const display = document.querySelector("#display");
-      const auta = [];
-      const auto = {        
-      };
+      const list = []
       
-      function fn1() {
 
-        auto.nazwa=nazwa.value;
-        auto.marka=marka.value;
-        auto.rok_produkcji=rok.value;
-        auto.przebieg=przebieg.value;
-        auta.push(auto);
-        for (const obj of auta) {
-            for(const key in auto){
+
+        function fn1(){
+        const todo={        
+        name: nazwa.value,
+        czas: czas.value,
+        compleate: false
+      };
+      list.push(todo);
+      for (const obj of list) {
+      for(const key in todo){
                 display.innerHTML += obj[key];
-                display.innerHTML += ",";
-                
-                
-            }
-                display.innerHTML += '<br>';
-                break;
-        
-       }
-        console.log(auta);
+                display.innerHTML += " ";
+
       }
-      dodaj.addEventListener("click", fn1);
+      display.innerHTML +=`<label for="check"><input type="checkbox" id="check"/></label>`;
+            display.innerHTML +=`<button id="usun">usun</button>`;
+            display.innerHTML += "<br>"; 
+            
+            const check = document.querySelector("#check");
+            const usun = document.querySelector("#usun");
+            
+break;
+      }
+      
+
+      
+            
+            
+            usun.addEventListener("click", fn2);
+    
+            function fn2(){
+                display.innerHTML = "";
+                const x = list.splice(1, 1);
+                for (const obj of list) {
+      for(const key in todo){
+                display.innerHTML += obj[key];
+                display.innerHTML += " ";
+
+      }
+      display.innerHTML +=`<label for="check"><input type="checkbox" id="check"/></label>`;
+            display.innerHTML +=`<button id="usun">usun</button>`;
+            display.innerHTML += "<br>"; 
+            
+            const check = document.querySelector("#check");
+            const usun = document.querySelector("#usun");
+            
+break;
+      }
+            }
+        
+        
+}
+
+
+
+    dodaj.addEventListener("click", fn1);
+    
     </script>
   </body>
 </html>
